@@ -1,6 +1,8 @@
 <?php
 require_once 'connection.php';
 
+$id = $_POST['id'];
+
 // Mengambil nilai dari form
 $question = $_POST['question'];
 $option1 = $_POST['option1'];
@@ -24,9 +26,11 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
 }
 
 // Prepared statement untuk memasukkan data ke database
-$stmt = $conn->prepare("INSERT INTO kuis (question, option1, option2, option3, option4, correct, explanation, image) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssss", $question, $option1, $option2, $option3, $option4, $correct, $explanation, $image);
+// $stmt = $conn->prepare("UPDATE kuis (question, option1, option2, option3, option4, correct, explanation, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+// $stmt->bind_param("ssssssss", $question, $option1, $option2, $option3, $option4, $correct, $explanation, $image);
+
+$stmt = $conn->prepare("UPDATE kuis SET question = ?, option1 = ?, option2 = ?, option3 = ?, option4 = ?, correct = ?, explanation = ?, image = ? WHERE id = ?");
+$stmt->bind_param("ssssssssi", $question, $option1, $option2, $option3, $option4, $correct, $explanation, $image, $id);
 
 // Eksekusi statement
 if ($stmt->execute()) {

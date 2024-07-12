@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,42 +18,51 @@
             z-index: 1000;
             border-radius: 5px;
         }
+
         .notification.show {
             display: block;
         }
+
         .header-image {
             width: 30px;
             height: auto;
             margin-right: 20px;
         }
+
         .button img {
             width: 30px;
             height: auto;
             margin-right: 20px;
             margin-top: 9px;
         }
+
         .description {
             max-width: 300px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
         .more-link {
             color: blue;
             cursor: pointer;
         }
+
         .action-buttons img {
             width: 20px;
             height: 20px;
             margin-right: 10px;
         }
+
         .quiz-image {
             max-width: 100px;
             max-height: 100px;
             margin-right: 10px;
         }
+        
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="sidebar">
@@ -83,6 +93,7 @@
                             <th>No</th>
                             <th>Soal</th>
                             <th>Jawaban</th>
+                            <th>Explanation</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
@@ -90,28 +101,19 @@
                     <tbody id="kuisTableBody">
                         <!-- Data Kuis dari Database -->
                         <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "materi";
-
-                        $conn = new mysqli($servername, $username, $password, $dbname);
-
-                        if ($conn->connect_error) {
-                            die("Koneksi gagal: " . $conn->connect_error);
-                        }
+                        require_once 'connection.php';
 
                         $sql = "SELECT * FROM kuis";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             $no = 1;
-                            while($row = $result->fetch_assoc()) {
+                            while ($row = $result->fetch_assoc()) {
                                 $question = isset($row['question']) ? $row['question'] : 'N/A';
-                                $option1 = isset($row['option1']) ? $row['option1'] : '';
-                                $option2 = isset($row['option2']) ? $row['option2'] : '';
-                                $option3 = isset($row['option3']) ? $row['option3'] : '';
-                                $option4 = isset($row['option4']) ? $row['option4'] : '';
+                                // $option1 = isset($row['option1']) ? $row['option1'] : '';
+                                // $option2 = isset($row['option2']) ? $row['option2'] : '';
+                                // $option3 = isset($row['option3']) ? $row['option3'] : '';
+                                // $option4 = isset($row['option4']) ? $row['option4'] : '';
                                 $correct = isset($row['correct']) ? $row['correct'] : '';
                                 $explanation = isset($row['explanation']) ? $row['explanation'] : '';
                                 $image = isset($row['image']) ? $row['image'] : '';
@@ -120,12 +122,15 @@
                                 echo "<td class='number'>" . $no++ . "</td>";
                                 echo "<td>" . htmlspecialchars($question, ENT_QUOTES) . "</td>";
                                 echo "<td>";
-                                echo "Option 1: " . htmlspecialchars($option1, ENT_QUOTES) . "<br>";
-                                echo "Option 2: " . htmlspecialchars($option2, ENT_QUOTES) . "<br>";
-                                echo "Option 3: " . htmlspecialchars($option3, ENT_QUOTES) . "<br>";
-                                echo "Option 4: " . htmlspecialchars($option4, ENT_QUOTES) . "<br>";
-                                echo "Correct Answer: " . htmlspecialchars($correct, ENT_QUOTES) . "<br>";
-                                echo "Explanation: " . htmlspecialchars($explanation, ENT_QUOTES);
+                                // echo "Option 1: " . htmlspecialchars($option1, ENT_QUOTES) . "<br>";
+                                // echo "Option 2: " . htmlspecialchars($option2, ENT_QUOTES) . "<br>";
+                                // echo "Option 3: " . htmlspecialchars($option3, ENT_QUOTES) . "<br>";
+                                // echo "Option 4: " . htmlspecialchars($option4, ENT_QUOTES) . "<br>";
+                                echo htmlspecialchars($correct, ENT_QUOTES) . "<br>";
+                                // echo "Explanation: " . htmlspecialchars($explanation, ENT_QUOTES);
+                                // echo "</td>";
+                                echo "<td>";
+                                echo htmlspecialchars($explanation, ENT_QUOTES) . "<br>";
                                 echo "</td>";
                                 echo "<td>";
                                 if ($image) {
@@ -134,8 +139,8 @@
                                 echo "</td>";
                                 echo "<td>
                                         <div class='action-buttons'>
-                                            <a href='edit-quiz.php?id=" . $row['id'] . "'><img src='asset/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
-                                            <a href='delete_quiz.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='asset/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
+                                            <a href='edit_materi.php?id=" . $row['id'] . "'><img src='asset/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
+                                            <a href='delete_kuis.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='asset/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
                                         </div>
                                       </td>";
                                 echo "</tr>";
@@ -179,4 +184,5 @@
         });
     </script>
 </body>
+
 </html>

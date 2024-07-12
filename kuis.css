@@ -77,10 +77,11 @@ header h2 {
     font-weight: bold;
 }
 
-.form-group input[type="text"], 
-.form-group textarea, 
+.form-group input[type="text"],
+.form-group textarea,
 .form-group select {
-    width: calc(100% - 20px); /* Adding some padding inside the input/textarea */
+    width: calc(100% - 20px);
+    /* Adding some padding inside the input/textarea */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -103,4 +104,8 @@ header h2 {
 
 .form-group input[type="submit"]:hover {
     background-color: #4cae4c;
+}
+
+table {
+    text-align: center;
 }
