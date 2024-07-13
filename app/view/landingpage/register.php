@@ -34,15 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="../../../assets/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Student Registration Form</title>
 </head>
+
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="register.php" method="POST">
+            <form action="register.php" method="POST" style="margin-left: 45px;">
                 <h1>Register</h1>
                 <span>fill in your details below</span>
                 <input type="text" name="full_name" placeholder="Full Name" required />
@@ -52,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <button type="submit">Register</button>
             </form>
         </div>
-        <div class="overlay-container">
+        <!-- <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-right">
                     <h1>Welcome Back!</h1>
@@ -60,7 +62,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button class="ghost" id="signIn">Log In</button>
                 </div>
             </div>
+        </div> -->
+        <div class="overlay-panel overlay-right" style="
+        background:#ff416c;
+        background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+        background: linear-gradient(to right, #ff4b2b, #ff416c);
+        background-position: 0 0;
+        color: #fff;">
+            <h1>Have a good day</h1>
+            <p>Have a account?</p>
+            <a href="login.php" style=" margin-top: -15px;"><button class="ghost" id="signIn" style="background-color: #b10101;">Log In</button></a>
         </div>
     </div>
 </body>
+
 </html>

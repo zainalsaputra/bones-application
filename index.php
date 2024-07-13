@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin']) || !isset($_SESSION['user'])) {
-    header('app/view/landingpage/login.php');
+    header('location: app/view/landingpage/index.php');
 }
-?>
+?>s
 <!DOCTYPE html>
 <html lang="en">
 
