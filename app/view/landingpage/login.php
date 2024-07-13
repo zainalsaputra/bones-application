@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../../../assets/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Login Form Using HTML And CSS Only</title>
 </head>
@@ -56,16 +56,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="container" id="container">
         <div class="form-container log-in-container">
-            <form action="login.php" method="POST">
+            <form action="login-proses.php" method="POST">
                 <h1>Login</h1>
-                <div class="social-container">
+                <!-- <div class="social-container">
                     <a href="#" class="social"><i class="fa fa-facebook fa-2x"></i></a>
                     <a href="#" class="social"><i class="fa fa-twitter fa-2x"></i></a>
-                </div>
+                </div> -->
                 <span>or use your account</span>
                 <input type="text" name="username" placeholder="Username" required />
                 <input type="password" name="password" placeholder="Password" required />
-                <a href="#">Forgot your password?</a>
+                <a href="register.php">Dont't have account? Register now</a>
                 <button type="submit">Log In</button>
             </form>
         </div>
