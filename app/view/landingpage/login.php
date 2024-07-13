@@ -2,48 +2,49 @@
 require_once '../../config/index.php';
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // $servername = "localhost";
-    // $dbusername = "root"; // Ganti sesuai username database Anda
-    // $dbpassword = ""; // Ganti sesuai password database Anda
-    // $dbname = "register"; // Ganti dengan nama database Anda
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//     // $servername = "localhost";
+//     // $dbusername = "root"; // Ganti sesuai username database Anda
+//     // $dbpassword = ""; // Ganti sesuai password database Anda
+//     // $dbname = "register"; // Ganti dengan nama database Anda
 
-    // // Buat koneksi
-    // $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+//     // // Buat koneksi
+//     // $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-    // // Cek koneksi
-    // if ($conn->connect_error) {
-    //     die("Connection failed: " . $conn->connect_error);
-    // }
+//     // // Cek koneksi
+//     // if ($conn->connect_error) {
+//     //     die("Connection failed: " . $conn->connect_error);
+//     // }
 
-    // Ambil data dari form
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+//     // Ambil data dari form
+//     $username = $_POST['username'];
+//     $password = $_POST['password'];
 
-    // Cek kredensial pengguna
-    $sql = "SELECT * FROM students WHERE username = '$username'";
-    $result = $conn->query($sql);
+//     // Cek kredensial pengguna
+//     $sql = "SELECT * FROM students WHERE username = '$username'";
+//     $result = $conn->query($sql);
 
-    if ($result && $result->num_rows > 0) {
-        // Ambil data pengguna
-        $row = $result->fetch_assoc();
-        // Verifikasi password
-        if (password_verify($password, $row['password'])) {
-            // Simpan informasi pengguna ke sesi
-            $_SESSION['username'] = $row['username'];
-            // Redirect ke halaman utama setelah login berhasil
-            header('Location: index/index.php');
-            exit();
-        } else {
-            echo "<script>alert('Invalid password.');</script>";
-        }
-    } else {
-        echo "<script>alert('No user found with this username.');</script>";
-    }
+//     if ($result && $result->num_rows > 0) {
+//         // Ambil data pengguna
+//         $row = $result->fetch_assoc();
+//         // Verifikasi password
+//         if (password_verify($password, $row['password'])) {
+//             // Simpan informasi pengguna ke sesi
+//             $_SESSION['username'] = $row['username'];
+//             // Redirect ke halaman utama setelah login berhasil
+//             header('Location: index/index.php');
+//             exit();
+//         } else {
+//             echo "<script>alert('Invalid password.');</script>";
+//         }
+//     } else {
+//         echo "<script>alert('No user found with this username.');</script>";
+//     }
 
-    $conn->close();
-}
+//     $conn->close();
+// }
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -56,17 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="container" id="container">
         <div class="form-container log-in-container">
-            <form action="login-proses.php" method="POST">
+            <form action="../../controller/login-proses.php" method="POST">
                 <h1>Login</h1>
-                <!-- <div class="social-container">
-                    <a href="#" class="social"><i class="fa fa-facebook fa-2x"></i></a>
-                    <a href="#" class="social"><i class="fa fa-twitter fa-2x"></i></a>
-                </div> -->
                 <span>or use your account</span>
                 <input type="text" name="username" placeholder="Username" required />
                 <input type="password" name="password" placeholder="Password" required />
                 <a href="register.php">Dont't have account? Register now</a>
-                <button type="submit">Log In</button>
+                <button type="submit" name="login">Log In</button>
             </form>
         </div>
         <div class="overlay-container">

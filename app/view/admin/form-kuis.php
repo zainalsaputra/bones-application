@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buat Kuis Pilihan Ganda</title>
-    <link rel="stylesheet" href="kuis.css">
+    <link rel="stylesheet" href="../../../assets/css/kuis.css">
 </head>
+
 <body>
     <div class="container">
         <div class="sidebar">
@@ -24,7 +26,7 @@
                 <h2>Buat Kuis Pilihan Ganda</h2>
             </header>
             <div class="form-container">
-                <form method="POST" action="kuis-proses.php" enctype="multipart/form-data">
+                <form method="POST" action="../../controller/admin/kuis-proses.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="question">Soal:</label>
                         <textarea id="question" name="question" rows="3" required></textarea>
@@ -70,4 +72,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuis</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../../assets/css/dashboard.css">
     <style>
         .notification {
             display: none;
@@ -59,7 +59,6 @@
             max-height: 100px;
             margin-right: 10px;
         }
-        
     </style>
 </head>
 
@@ -80,9 +79,9 @@
             <header>
                 <h2>Kuis</h2>
                 <div class="header-actions">
-                    <img src="asset/home.png" alt="Header Image" class="header-image">
-                    <a href="form kuis.html" class="button">
-                        <img src="asset/add.png" alt="Tambah Kuis">
+                    <img src="../../../assets/img/icon/home.png" alt="Header Image" class="header-image">
+                    <a href="form-kuis.php" class="button">
+                        <img src="../../../assets/img/icon/add.png" alt="Tambah Kuis">
                     </a>
                 </div>
             </header>
@@ -101,7 +100,7 @@
                     <tbody id="kuisTableBody">
                         <!-- Data Kuis dari Database -->
                         <?php
-                        require_once 'connection.php';
+                        require_once '../../config/index.php';
 
                         $sql = "SELECT * FROM kuis";
                         $result = $conn->query($sql);
@@ -134,13 +133,13 @@
                                 echo "</td>";
                                 echo "<td>";
                                 if ($image) {
-                                    echo "<img src='uploads/" . htmlspecialchars($image, ENT_QUOTES) . "' alt='Gambar Kuis' class='quiz-image'>";
+                                    echo "<img src='../../../assets/img/uploads/" . htmlspecialchars($image, ENT_QUOTES) . "' alt='Gambar Kuis' class='quiz-image'>";
                                 }
                                 echo "</td>";
                                 echo "<td>
                                         <div class='action-buttons'>
-                                            <a href='edit_materi.php?id=" . $row['id'] . "'><img src='asset/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
-                                            <a href='delete_kuis.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='asset/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
+                                            <a href='edit_materi.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
+                                            <a href='../../controller/admin/delete_kuis.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
                                         </div>
                                       </td>";
                                 echo "</tr>";
