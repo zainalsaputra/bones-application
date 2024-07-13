@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/index.php';
+require_once '../config/index.php';
 
 // session_start();
 // if (isset($_SESSION['admin'])) {
@@ -18,14 +18,14 @@ if (isset($_POST['login'])) {
     $cekUsername = $result['username'];
     $cekPassword = $result['password'];
     $cekLevel = $result['level'];
-    if ($cekUsername == $username && $cekPassword == $password && $cekLevel == 'Admin') {
+    if ($cekUsername == $username && $cekPassword == $password && $cekLevel == 'admin') {
         $_SESSION['admin'] = $cekUsername;
-        header('location: app/view/bau/index.php');
-    } elseif ($cekUsername == $username && $cekPassword == $password && $cekLevel == 'Pegawai') {
-        $_SESSION['pegawai'] = $cekUsername;
-        header('location: app/view/prodi/index.php');
+        header('location: index.php');
+    } elseif ($cekUsername == $username && $cekPassword == $password && $cekLevel == 'user') {
+        $_SESSION['user'] = $cekUsername;
+        header('location: index.php');
     } else {
-        header('location: login.php?gagal');
-        // echo "<script>alert('silahkan cek kembali username dan password anda!!'); document.location.href= 'login.php?'</script>";
+        // header('location: ../view/landingpage/login.php?gagal');
+        echo "<script>alert('cek kembali username atau password anda!'); document.location.href= '../view/landingpage/login.php'</script>";
     }
 }

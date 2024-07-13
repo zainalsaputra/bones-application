@@ -1,9 +1,9 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin']) || !isset($_SESSION['user'])) {
-    header('location: app/view/landingpage/index.php');
-}
-?>s
+// session_start();
+// if (!isset($_SESSION['admin']) || !isset($_SESSION['user'])) {
+//     header('location: app/view/landingpage/index.php');
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -307,7 +307,7 @@ if (!isset($_SESSION['admin']) || !isset($_SESSION['user'])) {
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+                <h2>Selamat datang <?php echo ($_GET['user'] === 'user' ? $_GET['user'] : $_GET['admin']) ?></h2>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa alias quam, eius error na</p>
                 <a href="Pilhan-Materi.html" class="btn">Mulai Belajar</a>
             </div>
