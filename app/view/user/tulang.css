@@ -1,0 +1,246 @@
+  body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 300px;
+      background: #4d7cbf;
+      color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h2 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .progress {
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      background-color: #fff;
+      color: #1d2b64;
+      padding: 5px;
+      border-radius: 5px;
+      text-align: center;
+      width: 0;
+      transition: width 0.5s ease;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav .section-title {
+      font-size: 0.9rem;
+      margin: 10px 0;
+      text-transform: uppercase;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+
+    nav .nav-item {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #1d2b64;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    nav .nav-item.active {
+      background-color: #fff;
+      color: #1d2b64;
+    }
+
+    nav .nav-icon {
+      margin-right: 10px;
+    }
+
+    nav .nav-check, nav .nav-loading {
+      margin-left: auto;
+    }
+
+    main.content {
+      flex: 1;
+      background-color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    main header {
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    main header h1 {
+      margin: 0;
+      font-size: 2rem;
+      text-align: left;
+    }
+
+    main header p {
+      font-size: 1.2rem;
+      margin-top: 5px;
+      text-align: left;
+    }
+
+    .separator {
+      border: none;
+      border-top: 2px solid #1d2b64;
+      margin: 20px 0;
+    }
+
+    section {
+      background-color: #f5f5f5;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      flex: 1 0 30rem;
+      margin: 1rem;
+      padding: 2rem;
+      display: none;
+    }
+
+    .image-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .author {
+      text-align: center;
+      margin: 20px 0;
+      font-style: italic;
+      color: #555;
+    }
+
+    .content {
+      font-size: 18.5px;
+      line-height: 2;
+      color: black;
+      padding: 3rem;
+      font-family: "Roboto", sans-serif;
+    }
+
+    .content h1 {
+      font-family: "Merriweather", serif;
+    }
+
+    .content a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+  
+
+    .arrow-container {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 24px;
+  color: #4CAF50;
+}
+
+.video-container {
+            text-align: center;
+        }
+
+/* kuis 8 */
+ .quiz-container {
+      
+      padding: 40px;
+      width: 90%;
+      max-width: 1200px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      text-align: left;
+  }
+
+  .question {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+  }
+
+  .answers {
+      margin-bottom: 20px;
+  }
+
+  .option {
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+  }
+
+  .option:hover {
+      background-color: #f1f1f1;
+  }
+
+  .correct {
+      background-color: lightgreen;
+      border-color: green;
+  }
+
+  .incorrect {
+      background-color: lightcoral;
+      border-color: red;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 10px; /* Mengatur lengkungan sudut */
+    background-color: #007bff; /* Warna latar belakang tombol */
+    color: #ffffff; /* Warna teks tombol */
+    border: none; /* Menghilangkan border */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out; /* Transisi animasi */
+}
+
+button:hover {
+    background-color: #0056b3; /* Warna latar belakang saat hover */
+    transform: translateY(-2px); /* Efek sedikit naik saat hover */
+}
+
+
+  #results {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+  }
+
+  .correct-feedback {
+    color: green;
+}
+
+.incorrect-feedback {
+    color: red;
+}

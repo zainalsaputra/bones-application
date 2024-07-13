@@ -1,10 +1,8 @@
 <?php
 session_start();
-
-// if (!isset($_SESSION['username'])) {
-//     header('Location: login.php');
-//     exit();
-// }
+if (!isset($_SESSION['admin']) || !isset($_SESSION['user'])) {
+    header('app/view/landingpage/login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
