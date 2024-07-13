@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .quiz-container {
+            border: 2px solid #000;
+            padding: 40px;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: left;
+        }
+
+        .question {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .answers {
+            margin-bottom: 20px;
+        }
+
+        .option {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .option:hover {
+            background-color: #f1f1f1;
+        }
+
+        .correct {
+            background-color: lightgreen;
+            border-color: green;
+        }
+
+        .incorrect {
+            background-color: lightcoral;
+            border-color: red;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #results {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container" id="quiz-container">
+        <div id="quiz"></div>
+        <button id="next" onclick="nextQuestion()" style="display:none;">Next</button>
+        <button id="submit" onclick="submitQuiz()">Submit</button>
+        <div id="results"></div>
+        <div id="score" style="display:none;"></div>
+    </div>
+    <script>
+        const quizData = [
+            {
+                question: "A developer is building an executive dashboard for Regional revenue. When Regional revenue is displayed in the dashboard, it should display the total value for a Region, regardless of the levels displayed in the visual. Which type of calculated field should the developer use?",
+                answers: {
+                    a: "Table calculation",
+                    b: "Simple calculated field",
+                    c: "Level-aware calculation: Aggregation (LAC-A)",
+                    d: "Level-aware calculation: Window (LAC-W)"
+                },
+                correct: "c",
+                explanation: "Level-aware calculation: Aggregation (LAC-A) is used when you need the total value regardless of the levels displayed."
+            },
+            {
+                question: "What is the capital of Indonesia?",
+                answers: {
+                    a: "Jakarta",
+                    b: "Bandung",
+                    c: "Surabaya",
+                    d: "Medan"
+                },
+                correct: "a",
+                explanation: "Jakarta is the capital of Indonesia."
+            }
+        ];
+
+        const quizContainer = document.getElementById('quiz');
+        const resultsContainer = document.getElementById('results');
+        const nextButton = document.getElementById('next');
+        const submitButton = document.getElementById('submit');
+        const scoreContainer = document.getElementById('score');
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function buildQuiz() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            const answers = [];
+
+            for (let letter in currentQuestion.answers) {
+                answers.push(
+                    `<label class="option">
+                        <input type="radio" name="question${currentQuestionIndex}" value="${letter}">
+                        ${currentQuestion.answers[letter]}
+                    </label>`
+                );
+            }
+
+            const output = 
+                `<div class="question">${currentQuestion.question}</div>
+                <div class="answers">${answers.join('')}</div>`;
+
+            quizContainer.innerHTML = output;
+        }
+
+        function submitQuiz() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            const answerContainer = quizContainer.querySelector('.answers');
+            const selector = `input[name=question${currentQuestionIndex}]:checked`;
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+            const correctAnswer = currentQuestion.correct;
+            const explanation = currentQuestion.explanation;
+
+            if (userAnswer === correctAnswer) {
+                answerContainer.querySelector(`input[value=${userAnswer}]`).parentElement.classList.add('correct');
+                score++;
+            } else {
+                if (userAnswer) {
+                    answerContainer.querySelector(`input[value=${userAnswer}]`).parentElement.classList.add('incorrect');
+                }
+                answerContainer.querySelector(`input[value=${correctAnswer}]`).parentElement.classList.add('correct');
+            }
+
+            resultsContainer.innerHTML = explanation;
+
+            if (currentQuestionIndex < quizData.length - 1) {
+                nextButton.style.display = 'block';
+                submitButton.style.display = 'none';
+            } else {
+                submitButton.style.display = 'none';
+                nextButton.style.display = 'none';
+                showScore();
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            resultsContainer.innerHTML = '';
+            nextButton.style.display = 'none';
+            submitButton.style.display = 'block';
+            buildQuiz();
+        }
+
+        function showScore() {
+            scoreContainer.innerHTML = `You scored ${score} out of ${quizData.length}`;
+            scoreContainer.style.display = 'block';
+        }
+
+        buildQuiz();
+    </script>
+</body>
+</html>
