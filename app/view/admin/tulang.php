@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tulang</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../../assets/css/dashboard.css">
     <style>
         .notification {
             display: none;
@@ -17,16 +18,21 @@
             z-index: 1000;
             border-radius: 5px;
         }
+
         .notification.show {
             display: block;
         }
+
         .header-image {
-            width: 30px; /* Sesuaikan ukuran gambar header */
+            width: 30px;
+            /* Sesuaikan ukuran gambar header */
             height: auto;
             margin-right: 20px;
         }
+
         .button img {
-            width: 30px; /* Sesuaikan ukuran gambar header */
+            width: 30px;
+            /* Sesuaikan ukuran gambar header */
             height: auto;
             margin-right: 20px;
             margin-top: 9px;
@@ -43,17 +49,21 @@
             z-index: 1000;
             border-radius: 5px;
         }
+
         .notification.show {
             display: block;
         }
+
         .button img {
-            width: 30px; /* Sesuaikan ukuran gambar header */
+            width: 30px;
+            /* Sesuaikan ukuran gambar header */
             height: auto;
             margin-right: 20px;
             margin-top: 9px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="sidebar">
@@ -71,9 +81,9 @@
             <header>
                 <h2>Tulang</h2>
                 <div class="header-actions">
-                    <img src="asset/home.png" alt="Header Image" class="header-image">
+                    <img src="../../../assets/img/icon/home.png" alt="Header Image" class="header-image">
                     <a href="add-tulang.html" class="button">
-                        <img src="asset/add.png" alt="Tambah Tulang">
+                        <img src="../../../assets/img/icon/add.png" alt="Tambah Tulang">
                     </a>
                 </div>
             </header>
@@ -92,34 +102,25 @@
                     <tbody id="tulangTableBody">
                         <!-- Data Tulang dari Database -->
                         <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "materi";
-
-                        $conn = new mysqli($servername, $username, $password, $dbname);
-
-                        if ($conn->connect_error) {
-                            die("Koneksi gagal: " . $conn->connect_error);
-                        }
+                        require_once '../../config/index.php';
 
                         $sql = "SELECT * FROM tulang";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             $no = 1;
-                            while($row = $result->fetch_assoc()) {
+                            while ($row = $result->fetch_assoc()) {
                                 $tanggal = !empty($row['tanggal']) ? date('d-m-Y', strtotime($row['tanggal'])) : 'N/A';
                                 echo "<tr id='row_" . $row['id'] . "'>";
                                 echo "<td class='number'>" . $no++ . "</td>";
                                 echo "<td>" . $row['name'] . "</td>";
-                                echo "<td><img src='" . $row['image'] . "' width='100'></td>";
+                                echo "<td><img src='../../../assets/img/uploads/" . $row['image'] . "' width='100'></td>";
                                 echo "<td data-full-description='" . htmlspecialchars($row['description']) . "'>" . substr($row['description'], 0, 100) . "...</td>";
                                 echo "<td>" . $tanggal . "</td>";
                                 echo "<td>
                                         <div class='action-buttons'>
-                                            <a href='edit-tulang.php?id=" . $row['id'] . "'><img src='asset/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
-                                            <a href='delete_tulang.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='asset/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
+                                            <a href='edit-tulang.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
+                                            <a href='delete_tulang.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
                                         </div>
                                       </td>";
                                 echo "</tr>";
@@ -171,4 +172,5 @@
         });
     </script>
 </body>
+
 </html>
