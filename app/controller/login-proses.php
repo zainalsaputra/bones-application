@@ -1,7 +1,7 @@
 <?php
 require_once '../config/index.php';
 
-// session_start();
+session_start();
 // if (isset($_SESSION['admin'])) {
 //     header('location: app/view/bau/index.php');
 // } elseif (isset($_SESSION['pegawai'])) {
@@ -20,10 +20,10 @@ if (isset($_POST['login'])) {
     $cekLevel = $result['level'];
     if ($cekUsername == $username && $cekPassword == $password && $cekLevel == 'admin') {
         $_SESSION['admin'] = $cekUsername;
-        header('location: index.php');
+        header('location: ../../index.php');
     } elseif ($cekUsername == $username && $cekPassword == $password && $cekLevel == 'user') {
         $_SESSION['user'] = $cekUsername;
-        header('location: index.php');
+        header('location: ../../index.php');
     } else {
         // header('location: ../view/landingpage/login.php?gagal');
         echo "<script>alert('cek kembali username atau password anda!'); document.location.href= '../view/landingpage/login.php'</script>";
