@@ -29,7 +29,7 @@
 //     $conn = null;
 // }
 
-require_once '../../config/index.php';
+require_once '../../../config/index.php';
 
 $id = $_GET['id'];
 
@@ -51,12 +51,12 @@ $result = $query->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Materi</title>
-    <!-- <link rel="stylesheet" href="../../../assets/css/kuis.css"> -->
+    <!-- <link rel="stylesheet" href="../../../../assets/css/kuis.css"> -->
 </head>
 
 <body>
     <h2>Update Materi</h2>
-    <form action="../../controller/admin/edit-kuis-proses.php" method="post" enctype="multipart/form-data">
+    <form action="../../../controller/admin/kuis/update.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $result['id']; ?>">
         <label for="question">Question</label><br>
         <input type="text" id="question" name="question" value="<?php echo $result['question'] ?>" required><br><br>
@@ -71,7 +71,7 @@ $result = $query->fetch_assoc();
         <label for="title">Correct Answer</label><br>
         <input type="text" id="correct" name="correct" value="<?php echo $result['correct'] ?>" required><br><br>
         <label for="image">Image</label><br>
-        <img src="../../../assets/img/uploads/<?php echo $result['image'] ?>" width="200"><br>
+        <img src="../../../../assets/img/uploads/<?php echo $result['image'] ?>" width="200"><br>
         <input type="file" id="image" name="image" accept="image/*"><br><br>
         <label for="explanation">Explanation</label><br>
         <textarea id="explanation" name="explanation" rows="4" required><?php echo $result['explanation'] ?></textarea><br><br>

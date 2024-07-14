@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Tulang</title>
-    <link rel="stylesheet" href="add-sendi.css">
+    <link rel="stylesheet" href="../../../../assets/css/kuis.css">
     <style>
         .notification {
             display: none;
@@ -17,28 +18,32 @@
             z-index: 1000;
             border-radius: 5px;
         }
+
         .notification.show {
             display: block;
         }
+
         .button img {
-            width: 30px; /* Sesuaikan ukuran gambar header */
+            width: 30px;
+            /* Sesuaikan ukuran gambar header */
             height: auto;
             margin-right: 20px;
             margin-top: 9px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="main-content">
             <header>
                 <h2>Tambah Tulang</h2>
                 <a href="tulang.php" class="button">
-                    <img src="asset/home.png" alt="Kembali ke Tulang">
+                    <img src="../../../../assets/img/icon/home.png" alt="Kembali ke Tulang">
                 </a>
             </header>
             <div class="form-container">
-                <form action="add-tulang-process.php" method="post" enctype="multipart/form-data">
+                <form action="../../../controller/admin/tulang/create.php" method="POST" enctype="multipart/form-data">
                     <label for="name">Nama Tulang:</label>
                     <input type="text" id="name" name="name" required>
 
@@ -70,4 +75,5 @@
         });
     </script>
 </body>
+
 </html>

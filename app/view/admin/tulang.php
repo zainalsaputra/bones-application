@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tulang</title>
-    <link rel="stylesheet" href="../../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../../../assets/css/styles.css">
     <style>
         .notification {
             display: none;
@@ -82,7 +82,7 @@
                 <h2>Tulang</h2>
                 <div class="header-actions">
                     <img src="../../../assets/img/icon/home.png" alt="Header Image" class="header-image">
-                    <a href="add-tulang.html" class="button">
+                    <a href="form/tulang.php" class="button">
                         <img src="../../../assets/img/icon/add.png" alt="Tambah Tulang">
                     </a>
                 </div>
@@ -119,8 +119,8 @@
                                 echo "<td>" . $tanggal . "</td>";
                                 echo "<td>
                                         <div class='action-buttons'>
-                                            <a href='edit-tulang.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
-                                            <a href='delete_tulang.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
+                                            <a href='update/tulang.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
+                                            <a href='../../controller/admin/tulang/delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
                                         </div>
                                       </td>";
                                 echo "</tr>";

@@ -1,24 +1,10 @@
 <?php
-$servername = "localhost";
-$username = "root";  // Sesuaikan dengan username yang benar
-$password = "";      // Sesuaikan dengan password yang benar
-$dbname = "materi";
-
-// Membuat koneksi
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Mendefinisikan variabel dengan nilai default
-$id = $name = $tanggal = $description = $image = "";
+require_once '../../../config/index.php';
 
 // Memeriksa apakah parameter GET id tersedia
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
 
+    $id = $_GET['id'];
     // SQL untuk mengambil data tulang berdasarkan ID
     $sql = "SELECT * FROM tulang WHERE id='$id'";
     $result = $conn->query($sql);
@@ -33,61 +19,18 @@ if (isset($_GET['id'])) {
         echo "Data tidak ditemukan.";
     }
 }
-
-// Memeriksa apakah form edit telah disubmit
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
-    $name = $_POST['name'];
-    $tanggal = $_POST['tanggal'];
-    $description = $_POST['description'];
-
-    // Mengunggah gambar jika ada file yang diunggah
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $target_dir = "uploads/";
-        $target_file = $target_dir . basename($_FILES["image"]["name"]);
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        $allowed_types = array("jpg", "jpeg", "png", "gif");
-
-        if (in_array($imageFileType, $allowed_types)) {
-            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-                $image = $target_file;
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        } else {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        }
-    }
-
-    // SQL untuk melakukan update data
-    if (!empty($image)) {
-        $sql = "UPDATE tulang SET name='$name', tanggal='$tanggal', description='$description', image='$image' WHERE id='$id'";
-    } else {
-        $sql = "UPDATE tulang SET name='$name', tanggal='$tanggal', description='$description' WHERE id='$id'";
-    }
-
-    if ($conn->query($sql) === TRUE) {
-        // Mengarahkan kembali ke halaman tulang dengan pesan sukses
-        header("Location: tulang.php?edit_success=true");
-        exit();
-    } else {
-        echo "Error updating record: " . $conn->error;
-    }
-}
-
-// Menutup koneksi
-$conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Tulang</title>
-    <link rel="stylesheet" href="edit.css">
+    <link rel="stylesheet" href="../../../../assets/css/update.css">
 </head>
+
 <body>
     <div class="container">
         <div class="sidebar">
@@ -106,7 +49,7 @@ $conn->close();
                 <h2>Edit Data Tulang</h2>
             </header>
             <div class="form-container">
-                <form method="POST" action="edit-tulang.php" enctype="multipart/form-data">
+                <form method="POST" action="../../../controller/admin/tulang/update.php" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div class="form-group">
                         <label for="name">Nama Tulang:</label>
@@ -124,7 +67,7 @@ $conn->close();
                         <label for="image">Gambar:</label>
                         <?php if (!empty($image)) : ?>
                             <div>
-                                <img src="<?php echo $image; ?>" alt="Current Image" width="100">
+                                <img src="../../../../assets/img/uploads/<?php echo $image; ?>" alt="Current Image" width="200">
                             </div>
                         <?php endif; ?>
                         <input type="file" id="image" name="image">
@@ -137,4 +80,5 @@ $conn->close();
         </div>
     </div>
 </body>
+
 </html>

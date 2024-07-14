@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuis</title>
-    <link rel="stylesheet" href="../../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../../../assets/css/styles.css">
     <style>
         .notification {
             display: none;
@@ -80,7 +80,7 @@
                 <h2>Kuis</h2>
                 <div class="header-actions">
                     <img src="../../../assets/img/icon/home.png" alt="Header Image" class="header-image">
-                    <a href="form-kuis.php" class="button">
+                    <a href="form/kuis.php" class="button">
                         <img src="../../../assets/img/icon/add.png" alt="Tambah Kuis">
                     </a>
                 </div>
@@ -138,8 +138,8 @@
                                 echo "</td>";
                                 echo "<td>
                                         <div class='action-buttons'>
-                                            <a href='edit_materi.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
-                                            <a href='../../controller/admin/delete_kuis.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
+                                            <a href='update/kuis.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
+                                            <a href='../../controller/admin/kuis/delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
                                         </div>
                                       </td>";
                                 echo "</tr>";

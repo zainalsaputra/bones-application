@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/index.php';
+require_once '../../../config/index.php';
 
 $id = $_POST['id'];
 
@@ -16,7 +16,7 @@ $explanation = $_POST['explanation'];
 $image = null;
 if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     $image = basename($_FILES['image']['name']);
-    $target_dir = "../../../assets/img/uploads/";
+    $target_dir = "../../../../assets/img/uploads/";
     $target_file = $target_dir . $image;
 
     // Memindahkan file gambar yang diunggah ke direktori uploads
@@ -35,7 +35,7 @@ $stmt->bind_param("ssssssssi", $question, $option1, $option2, $option3, $option4
 // Eksekusi statement
 if ($stmt->execute()) {
     // Redirect ke halaman kuis.php setelah berhasil disimpan
-    header("Location: ../../view/admin/dashboard.php");
+    header("Location: ../../../view/admin/kuis.php");
 } else {
     // Tampilkan pesan kesalahan jika terjadi
     echo "Error: " . $stmt->error;
