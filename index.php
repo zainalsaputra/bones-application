@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['admin'])) {
-    header('location: app/view/admin/dashboard.php');
+    header('location: app/view/admin/kuis.php');
     return;
 }
 if (!isset($_SESSION['user'])) {
@@ -313,7 +313,7 @@ if (!isset($_SESSION['user'])) {
             <div class="hero-content">
                 <h2>Selamat datang <?php echo $_SESSION['user'] ?></h2>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa alias quam, eius error na</p>
-                <a href="Pilhan-Materi.html" class="btn">Mulai Belajar</a>
+                <a href="app/view/user/materi/index.php" class="btn">Mulai Belajar</a>
             </div>
 
         </div>

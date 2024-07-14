@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,10 +27,14 @@
         header {
             background: #fff;
             padding: 1rem 0;
-            position: fixed; /* Menjadikan header tetap di bagian atas layar */
-            width: 100%; /* Menyesuaikan lebar dengan lebar layar */
-            top: 0; /* Menempatkan header di bagian atas layar */
-            z-index: 1000; /* Memberikan nilai z-index yang tinggi agar header tumpang tindih di atas konten lain */
+            position: fixed;
+            /* Menjadikan header tetap di bagian atas layar */
+            width: 100%;
+            /* Menyesuaikan lebar dengan lebar layar */
+            top: 0;
+            /* Menempatkan header di bagian atas layar */
+            z-index: 1000;
+            /* Memberikan nilai z-index yang tinggi agar header tumpang tindih di atas konten lain */
         }
 
 
@@ -124,7 +129,7 @@
             border-radius: 50%;
         }
 
-        
+
         .services {
             background: white;
             padding: 3rem 0;
@@ -146,7 +151,7 @@
             background: #b8e6e2;
             padding: 1rem;
             flex: 1;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             border-radius: 13px;
         }
 
@@ -166,7 +171,7 @@
             align-items: center;
         }
 
-        .why-us h2{
+        .why-us h2 {
             align-items: center;
             margin-bottom: 1.3rem;
         }
@@ -191,7 +196,7 @@
             background: #fff;
             padding: 1rem;
             flex: 1;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .project img {
@@ -218,7 +223,7 @@
             text-align: center;
         }
 
-        .testimonials h2{
+        .testimonials h2 {
             align-items: center;
             margin-bottom: 1rem;
         }
@@ -226,7 +231,7 @@
         .testimonial {
             background: #f5f5f5;
             padding: 2rem;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             width: 60%;
             margin: 0 auto;
         }
@@ -265,19 +270,17 @@
             color: #fff;
         }
 
-        
+
         .why-us video {
-            width: 50%; 
-            height: auto; 
-            max-width: 100%; 
-            display: block; 
+            width: 50%;
+            height: auto;
+            max-width: 100%;
+            display: block;
             margin: 0 auto;
         }
-
-
-
     </style>
 </head>
+
 <body>
     <header>
         <div class="container header-container">
@@ -288,7 +291,7 @@
                 <ul>
                     <li><a href="#">Beranda</a></li>
                     <li><a href="#">Materi</a></li>
-                    
+
                 </ul>
             </nav>
             <a href="#" class="contact-btn">Masuk</a>
@@ -300,13 +303,13 @@
             <div class="hero-content">
                 <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa alias quam, eius error na</p>
-                <a href="Pilhan-Materi.html" class="btn">Mulai Belajar</a>
+                <a href="materi/index.php" class="btn">Mulai Belajar</a>
             </div>
-         
+
         </div>
     </section>
 
-    
+
 
     <section class="services">
         <div class="container">
@@ -336,9 +339,9 @@
             </div>
         </div>
     </section>
-    
 
-   
+
+
 
     <section class="testimonials">
         <div class="container">
@@ -351,16 +354,17 @@
         </div>
     </section>
 
-   
+
 
     <footer>
         <div class="container">
             <div class="footer-logo">
                 <h2>Lorem</h2>
             </div>
-            
+
             <p>&copy; 2024 Flowy. All rights reserved.</p>
         </div>
     </footer>
 </body>
+
 </html>
