@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 12, 2024 at 02:15 PM
+-- Generation Time: Jul 14, 2024 at 05:58 PM
 -- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- PHP Version: 8.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `materi`
+-- Database: `bones_db`
 --
 
 -- --------------------------------------------------------
@@ -37,31 +37,6 @@ CREATE TABLE `kuis` (
   `correct` varchar(1) NOT NULL,
   `explanation` text NOT NULL,
   `image` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `kuis`
---
-
-INSERT INTO `kuis` (`id`, `question`, `option1`, `option2`, `option3`, `option4`, `correct`, `explanation`, `image`) VALUES
-(1, 'apa aja', 'asa', 'asdf', 'dfd', 'sds', 'B', 'adsad', NULL),
-(2, 'adadf', 'aa', 'sss', 'ddd', 'sds', 'B', 'dfadadc', NULL),
-(3, 'zx', 'as', 'ss', 'ss', 'ssd', 'B', 'ada', 'Screenshot (6).png'),
-(4, 'ASAA', 'SS', 'DS', 'AW', 'AD', 'C', 'CXV', 'Screenshot (2).png');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `materi`
---
-
-CREATE TABLE `materi` (
-  `id` int NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `content` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -137,7 +112,29 @@ CREATE TABLE `tulang` (
 --
 
 INSERT INTO `tulang` (`id`, `name`, `tanggal`, `image`, `description`) VALUES
-(6, 'judul', '2024-07-12', 'uploads/Screenshot (3).png', 'aaaaa');
+(7, 'Tengkorak', '2024-07-14', 'InShot_20240714_120603291.jpg', 'Manusia adalah makhluk hidup');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level` varchar(50) NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `level`) VALUES
+(1, 'admin1', 'admin1', 'admin'),
+(2, 'user1', 'user1', 'user'),
+(3, 'adinda', 'adinda', 'user');
 
 --
 -- Indexes for dumped tables
@@ -147,12 +144,6 @@ INSERT INTO `tulang` (`id`, `name`, `tanggal`, `image`, `description`) VALUES
 -- Indexes for table `kuis`
 --
 ALTER TABLE `kuis`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `materi`
---
-ALTER TABLE `materi`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -186,6 +177,12 @@ ALTER TABLE `tulang`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -193,13 +190,7 @@ ALTER TABLE `tulang`
 -- AUTO_INCREMENT for table `kuis`
 --
 ALTER TABLE `kuis`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `materi`
---
-ALTER TABLE `materi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `menu_items`
@@ -229,7 +220,13 @@ ALTER TABLE `sendi`
 -- AUTO_INCREMENT for table `tulang`
 --
 ALTER TABLE `tulang`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
