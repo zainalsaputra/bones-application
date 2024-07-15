@@ -42,27 +42,27 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="question">Soal:</label>
+                        <label for="question">Soal</label>
                         <textarea id="question" name="question" rows="3" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="option1">Opsi A:</label>
+                        <label for="option1">Opsi A</label>
                         <input type="text" id="option1" name="option1" required>
                     </div>
                     <div class="form-group">
-                        <label for="option2">Opsi B:</label>
+                        <label for="option2">Opsi B</label>
                         <input type="text" id="option2" name="option2" required>
                     </div>
                     <div class="form-group">
-                        <label for="option3">Opsi C:</label>
+                        <label for="option3">Opsi C</label>
                         <input type="text" id="option3" name="option3" required>
                     </div>
                     <div class="form-group">
-                        <label for="option4">Opsi D:</label>
+                        <label for="option4">Opsi D</label>
                         <input type="text" id="option4" name="option4" required>
                     </div>
                     <div class="form-group">
-                        <label for="correct">Jawaban Benar:</label>
+                        <label for="correct">Jawaban Benar</label>
                         <select id="correct" name="correct" required>
                             <option value="A">A</option>
                             <option value="B">B</option>
@@ -71,11 +71,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="explanation">Penjelasan:</label>
+                        <label for="explanation">Penjelasan</label>
                         <textarea id="explanation" name="explanation" rows="3" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="image">Gambar:</label>
+                        <label for="image">Gambar</label>
                         <input type="file" id="image" name="image">
                     </div>
                     <div class="form-group">

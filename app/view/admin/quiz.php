@@ -142,7 +142,7 @@
                                 echo "</tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='5'>Tidak ada data kuis</td></tr>";
+                            echo "<tr><td colspan='5'>Tidak ada data kuis, pastikan module telah dibuat!</td></tr>";
                         }
                         $conn->close();
                         ?>
