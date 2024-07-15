@@ -1,0 +1,81 @@
+  body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background-color: white;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4d7cbf, #fff), #f5f5f5;
+  color: #fff;
+  padding: 0 2rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  background-color: #fff;
+  color: #1d2b64;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: #1d2b64;
+  color: #fff;
+}
+
+.content {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: black;
+  text-align: justify; /* Membuat teks rata kanan-kiri */
+  font-size: 20px;
+  line-height: 1.6; /* Menambahkan jarak antar baris */
+}
+
+.content .opening p {
+
+  max-width: 800px;
+  margin: 0 auto;
+  color: #333;
+  line-height: 2; /* Menambahkan jarak antar baris */
+  text-align: justify; /* Membuat teks rata kanan-kiri */
+  color: black;
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+
+
+
+.content h2 {
+  color: #1d2b64;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #f0f0f0;
+}
