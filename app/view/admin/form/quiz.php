@@ -33,12 +33,12 @@
                         <?php
                         require_once '../../../config/index.php';
 
-                        $query = mysqli_query($conn, "SELECT name FROM courses");
+                        $query = mysqli_query($conn, "SELECT id, name FROM courses");
                         ?>
 
                         <select id="module" name="module" required>
                             <?php foreach ($query as $module) : ?>
-                                <option value="<?php echo $module['name'] ?>"><?php echo $module['name'] ?></option>
+                                <option value="<?php echo $module['id'] ?>"><?php echo $module['name'] ?></option>
                             <?php endforeach ?>
                         </select>
 

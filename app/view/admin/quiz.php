@@ -90,6 +90,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Module</th>
                             <th>Soal</th>
                             <th>Jawaban</th>
                             <th>Explanation</th>
@@ -102,13 +103,14 @@
                         <?php
                         require_once '../../config/index.php';
 
-                        $sql = "SELECT * FROM quiz";
+                        $sql = "SELECT * FROM quiz INNER JOIN courses ON courses.id = quiz.course_id";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             $no = 1;
                             while ($row = $result->fetch_assoc()) {
                                 $question = isset($row['question']) ? $row['question'] : 'N/A';
+                                $module = isset(($row['name'])) ? $row['name'] : '';
                                 // $option1 = isset($row['option1']) ? $row['option1'] : '';
                                 // $option2 = isset($row['option2']) ? $row['option2'] : '';
                                 // $option3 = isset($row['option3']) ? $row['option3'] : '';
@@ -119,15 +121,12 @@
 
                                 echo "<tr id='row_" . $row['id'] . "'>";
                                 echo "<td class='number'>" . $no++ . "</td>";
+                                echo "<td>";
+                                echo htmlspecialchars($module, ENT_QUOTES) . "<br>";
+                                echo "</td>";
                                 echo "<td>" . htmlspecialchars($question, ENT_QUOTES) . "</td>";
                                 echo "<td>";
-                                // echo "Option 1: " . htmlspecialchars($option1, ENT_QUOTES) . "<br>";
-                                // echo "Option 2: " . htmlspecialchars($option2, ENT_QUOTES) . "<br>";
-                                // echo "Option 3: " . htmlspecialchars($option3, ENT_QUOTES) . "<br>";
-                                // echo "Option 4: " . htmlspecialchars($option4, ENT_QUOTES) . "<br>";
                                 echo htmlspecialchars($correct, ENT_QUOTES) . "<br>";
-                                // echo "Explanation: " . htmlspecialchars($explanation, ENT_QUOTES);
-                                // echo "</td>";
                                 echo "<td>";
                                 echo htmlspecialchars($explanation, ENT_QUOTES) . "<br>";
                                 echo "</td>";
@@ -139,7 +138,7 @@
                                 echo "<td>
                                         <div class='action-buttons'>
                                             <a href='update/quiz.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
-                                            <a href='../../controller/admin/kuis/delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
+                                            <a href='../../controller/admin/page/module/delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
                                         </div>
                                       </td>";
                                 echo "</tr>";
