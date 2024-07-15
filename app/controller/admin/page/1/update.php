@@ -1,5 +1,5 @@
 <?php
-require_once '../../../config/index.php';
+require_once '../../../../config/index.php';
 
 // Mendefinisikan variabel dengan nilai default
 $id = $name = $tanggal = $description = $image = "";
@@ -13,14 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Mengunggah gambar jika ada file yang diunggah
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $target_dir = "../../../../assets/img/uploads/";
+        $target_dir = "../../../../../assets/img/uploads/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $allowed_types = array("jpg", "jpeg", "png", "gif");
 
         // if ($allowed_types) {
-        //     // header("Location: ../../../view/admin/tulang.php?edit_success=false");
-        //     echo "<script>alert('Ekstensi file harus jpg/jpeg/png/gif'); document.location.href= '../../../view/admin/tulang.php'</script>";
+        //     // header("Location: ../../../view/admin/courses.php?edit_success=false");
+        //     echo "<script>alert('Ekstensi file harus jpg/jpeg/png/gif'); document.location.href= '../../../view/admin/courses.php'</script>";
         //     exit();
         // }
 
@@ -39,14 +39,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // SQL untuk melakukan update data
     if (!empty($image)) {
-        $sql = "UPDATE tulang SET name='$name', tanggal='$tanggal', description='$description', image='$image' WHERE id='$id'";
+        $sql = "UPDATE courses SET name='$name', tanggal='$tanggal', description='$description', image='$image' WHERE id='$id'";
     } else {
-        $sql = "UPDATE tulang SET name='$name', tanggal='$tanggal', description='$description' WHERE id='$id'";
+        $sql = "UPDATE courses SET name='$name', tanggal='$tanggal', description='$description' WHERE id='$id'";
     }
 
     if ($conn->query($sql) === TRUE) {
-        // Mengarahkan kembali ke halaman tulang dengan pesan sukses
-        header("Location: ../../../view/admin/tulang.php?edit_success=true");
+        // Mengarahkan kembali ke halaman courses dengan pesan sukses
+        header("Location: ../../../../view/admin/courses.php?edit_success=true");
         exit();
     } else {
         echo "Error updating record: " . $conn->error;

@@ -23,7 +23,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
         felis et ipsum bibendum ultrices.
       </p>
-      <a href="opening-tulang.php" class="button">Pelajari</a>
+      <a href="courses/opening-tulang.php" class="button">Pelajari</a>
     </section>
     <section class="animate">
       <h2>Sendi Gerak</h2>

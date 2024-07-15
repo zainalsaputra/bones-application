@@ -1,9 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['admin'])) {
-
     header('location: app/view/admin/kuis.php');
-  
     return;
 }
 if (!isset($_SESSION['user'])) {
