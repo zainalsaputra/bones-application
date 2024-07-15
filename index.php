@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['admin'])) {
-    header('location: app/view/admin/kuis.php');
+    header('location: app/view/admin/quiz.php');
     return;
 }
 if (!isset($_SESSION['user'])) {

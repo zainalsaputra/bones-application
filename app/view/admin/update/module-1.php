@@ -37,11 +37,11 @@ if (isset($_GET['id'])) {
             <h1>eProduct</h1>
             <ul>
                 <li><a href="index-admin.php">Dashboard</a></li>
-                <li class="active"><a href="tulang.php">Tulang</a></li>
-                <li><a href="sendi.php">Sendi</a></li>
-                <li><a href="otot.php">Otot</a></li>
-                <li><a href="penyakit.php">Penyakit</a></li>
-                <li><a href="kuis.php">Kuis</a></li>
+                <li class="active"><a href="module-1.php">Module 1</a></li>
+                <li><a href="sendi.php">Module 2</a></li>
+                <li><a href="otot.php">Module 3</a></li>
+                <li><a href="penyakit.php">Module 4</a></li>
+                <li><a href="quiz.php">Quiz</a></li>
             </ul>
         </div>
         <div class="main-content">
