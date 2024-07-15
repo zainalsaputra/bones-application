@@ -9,16 +9,15 @@ if ($conn->query($queryImage)) {
     $query = $conn->query($queryImage);
     $select = $query->fetch_assoc();
     $dirImage = "../../../../../assets/img/uploads/" . $select['image'];
-    if (file_exists($dirImage)) {
+    try {
         $sql = "DELETE FROM courses WHERE id='$id'";
-        $try = $conn->query($sql);
-        if (!$try) {
-            echo 0;
-        };
-        // if (mysqli_report(MYSQLI_REPORT_ERROR)) {
-        //     echo 0;
-        //     return;
-        // };
+        $conn->query($sql);
+    } catch (Exception $ex) {
+        echo "<script>alert('" . $ex->getMessage() . "')</script>";
+        header("Location: ../../../../view/admin/module.php?delete_success=false");
+        return;
+    }
+    if (file_exists($dirImage)) {
         if (unlink($dirImage)) {
             header("Location: ../../../../view/admin/module.php?delete_success=true");
             return;

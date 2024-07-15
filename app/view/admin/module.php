@@ -131,14 +131,38 @@
                     </tbody>
                 </table>
             </div>
-            <div class="notification" id="notification">Materi telah dihapus!</div>
+            <div class="notification" id="notificationTrue">Materi telah dihapus!</div>
+            <div class="notification" id="notificationFalse">Module tersebut memiliki kuis aktif!</div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             if (window.location.search.includes('delete_success=true')) {
-                const notification = document.getElementById('notification');
+                const notification = document.getElementById('notificationTrue');
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+
+                // Remove the deleted row and redirect
+                const urlParams = new URLSearchParams(window.location.search);
+                const id = urlParams.get('id');
+                if (id) {
+                    const row = document.getElementById('row_' + id);
+                    if (row) {
+                        row.remove();
+                    }
+                    // Renumber rows
+                    const rows = document.querySelectorAll('#tulangTableBody tr');
+                    rows.forEach((row, index) => {
+                        row.querySelector('.number').textContent = index + 1;
+                    });
+                }
+            }
+
+            if (window.location.search.includes('delete_success=false')) {
+                const notification = document.getElementById('notificationFalse');
                 notification.classList.add('show');
                 setTimeout(() => {
                     notification.classList.remove('show');
