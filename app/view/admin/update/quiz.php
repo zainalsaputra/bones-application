@@ -1,85 +1,97 @@
-<?php
-// Ambil data materi dari database berdasarkan ID untuk proses edit
-
-// if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
-//     $id = $_GET['id'];
-
-//     try {
-//         $conn = new PDO("mysql:host=localhost;dbname=nama_database", "username", "password");
-//         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-//         $sql = "SELECT * FROM materials WHERE id = :id";
-//         $stmt = $conn->prepare($sql);
-//         $stmt->bindParam(':id', $id);
-//         $stmt->execute();
-
-//         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-//         if (!$result) {
-//             die("Materi tidak ditemukan.");
-//         }
-
-//         $title = $result['title'];
-//         $image = $result['image'];
-//         $content = $result['content'];
-
-//     } catch(PDOException $e) {
-//         echo "Error: " . $e->getMessage();
-//     }
-
-//     $conn = null;
-// }
-
-require_once '../../../config/index.php';
-
-$id = $_GET['id'];
-
-$query = mysqli_query($conn, "SELECT quiz.id, quiz.question, quiz.option1, quiz.option2, quiz.option3, quiz.option4, quiz.correct, quiz.explanation, quiz.image, courses.name FROM quiz INNER JOIN courses ON courses.id = quiz.course_id WHERE quiz.id = $id");
-$result = $query->fetch_assoc();
-
-// foreach ($sql as $result) {
-//     $title = $result['title'];
-//     $image = $result['image'];
-//     $content = $result['content'];
-// }
-
-?>
-<!-- Form edit materi -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Materi</title>
-    <!-- <link rel="stylesheet" href="../../../../assets/css/kuis.css"> -->
+    <title>Buat Kuis Pilihan Ganda</title>
+    <link rel="stylesheet" href="../../../../assets/css/kuis.css">
 </head>
 
 <body>
-    <h2>Update Materi</h2>
-    <form action="../../../controller/admin/page/quiz/update.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?php echo $result['id']; ?>">
-        <label for="question">Module</label><br>
-        <input type="text" id="module" name="module" value="<?php echo $result['name'] ?>" required><br><br>
-        <label for="question">Question</label><br>
-        <input type="text" id="question" name="question" value="<?php echo $result['question'] ?>" required><br><br>
-        <label for="title">Option 1</label><br>
-        <input type="text" id="option1" name="option1" value="<?php echo $result['option1'] ?>" required><br><br>
-        <label for="title">Option 2</label><br>
-        <input type="text" id="option2" name="option2" value="<?php echo $result['option2'] ?>" required><br><br>
-        <label for="title">Option 3</label><br>
-        <input type="text" id="option3" name="option3" value="<?php echo $result['option3'] ?>" required><br><br>
-        <label for="title">Option 4</label><br>
-        <input type="text" id="option4" name="option4" value="<?php echo $result['option4'] ?>" required><br><br>
-        <label for="title">Correct Answer</label><br>
-        <input type="text" id="correct" name="correct" value="<?php echo $result['correct'] ?>" required><br><br>
-        <label for="image">Image</label><br>
-        <img src="../../../../assets/img/uploads/<?php echo $result['image'] ?>" width="200"><br>
-        <input type="file" id="image" name="image" accept="image/*"><br><br>
-        <label for="explanation">Explanation</label><br>
-        <textarea id="explanation" name="explanation" rows="4" required><?php echo $result['explanation'] ?></textarea><br><br>
+    <div class="container">
+        <div class="sidebar">
+            <h1>eProduct</h1>
+            <ul>
+                <li><a href="index-admin.php">Dashboard</a></li>
+                <li><a href="../module.php">Module</a></li>
+                <li class="active"><a href="quiz.php">Quiz</a></li>
+                <li><a href="../logout.php">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <header>
+                <h2>Buat Kuis Pilihan Ganda</h2>
+            </header>
+            <div class="form-container">
+                <form method="POST" action="../../../controller/admin/page/quiz/create.php" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="module">Module</label>
 
-        <input type="submit" value="Update">
-    </form>
+                        <?php
+                        require_once '../../../config/index.php';
+
+                        $id = $_GET['id'];
+
+                        // $query = mysqli_query($conn, "SELECT id, name FROM courses");
+
+                        $query = mysqli_query($conn, "SELECT quiz.id, quiz.question, quiz.option1, quiz.option2, quiz.option3, quiz.option4, quiz.correct, quiz.explanation, quiz.image, courses.name FROM quiz INNER JOIN courses ON courses.id = quiz.course_id WHERE quiz.id = $id");
+
+                        $result = $query->fetch_assoc();
+                        ?>
+
+                        <select id="module" name="module" required>
+                            <?php foreach ($query as $module) : ?>
+                                <option value="<?php echo $module['id'] ?>"><?php echo $module['name'] ?></option>
+                            <?php endforeach ?>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="question">Soal:</label>
+                        <textarea id="question" name="question" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="option1">Opsi A:</label>
+                        <input type="text" id="option1" name="option1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="option2">Opsi B:</label>
+                        <input type="text" id="option2" name="option2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="option3">Opsi C:</label>
+                        <input type="text" id="option3" name="option3" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="option4">Opsi D:</label>
+                        <input type="text" id="option4" name="option4" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correct">Jawaban Benar:</label>
+                        <select id="correct" name="correct" required>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="explanation">Penjelasan:</label>
+                        <textarea id="explanation" name="explanation" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <img src="../../../../assets/img/uploads/<?php echo $result['image'] ?>" width="200"><br>
+                        <input type="file" id="image" name="image">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Simpan Kuis">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -136,7 +136,7 @@
                                 echo "<td>
                                         <div class='action-buttons'>
                                             <a href='update/quiz.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
-                                            <a href='../../controller/admin/page/module/delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
+                                            <a href='../../controller/admin/page/quiz/delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
                                         </div>
                                       </td>";
                                 echo "</tr>";
