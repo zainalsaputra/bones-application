@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Tulang</title>
+    <title>Edit Module</title>
     <link rel="stylesheet" href="../../../../assets/css/update.css">
 </head>
 
@@ -44,25 +44,25 @@ if (isset($_GET['id'])) {
         </div>
         <div class="main-content">
             <header>
-                <h2>Edit Data Tulang</h2>
+                <h2>Edit Module</h2>
             </header>
             <div class="form-container">
                 <form method="POST" action="../../../controller/admin/page/module/update.php" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div class="form-group">
-                        <label for="name">Nama Tulang:</label>
+                        <label for="name">Nama</label>
                         <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($name); ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="tanggal">Tanggal:</label>
+                        <label for="tanggal">Tanggal</label>
                         <input type="date" id="tanggal" name="tanggal" value="<?php echo htmlspecialchars($tanggal); ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="description">Deskripsi:</label>
+                        <label for="description">Deskripsi</label>
                         <textarea id="description" name="description" rows="5" required><?php echo htmlspecialchars($description); ?></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="image">Gambar:</label>
+                        <label for="image">Gambar</label>
                         <?php if (!empty($image)) : ?>
                             <div>
                                 <img src="../../../../assets/img/uploads/<?php echo $image; ?>" alt="Current Image" width="200">
