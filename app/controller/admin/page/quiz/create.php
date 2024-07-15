@@ -9,6 +9,7 @@ $option3 = $_POST['option3'];
 $option4 = $_POST['option4'];
 $correct = $_POST['correct'];
 $explanation = $_POST['explanation'];
+$course_name = $_POST['course_name'];
 
 // Menangani file gambar yang diunggah
 $image = null;
@@ -24,9 +25,9 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
 }
 
 // Prepared statement untuk memasukkan data ke database
-$stmt = $conn->prepare("INSERT INTO quiz (question, option1, option2, option3, option4, correct, explanation, image) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssss", $question, $option1, $option2, $option3, $option4, $correct, $explanation, $image);
+$stmt = $conn->prepare("INSERT INTO quiz (question, option1, option2, option3, option4, correct, explanation, image, course_name) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssss", $question, $option1, $option2, $option3, $option4, $correct, $explanation, $image, $course_name);
 
 // Eksekusi statement
 if ($stmt->execute()) {

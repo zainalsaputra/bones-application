@@ -80,7 +80,7 @@
                 <h2>Kuis</h2>
                 <div class="header-actions">
                     <img src="../../../assets/img/icon/home.png" alt="Header Image" class="header-image">
-                    <a href="form/kuis.php" class="button">
+                    <a href="form/quiz.php" class="button">
                         <img src="../../../assets/img/icon/add.png" alt="Tambah Kuis">
                     </a>
                 </div>
@@ -102,7 +102,7 @@
                         <?php
                         require_once '../../config/index.php';
 
-                        $sql = "SELECT * FROM kuis";
+                        $sql = "SELECT * FROM quiz";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
@@ -138,7 +138,7 @@
                                 echo "</td>";
                                 echo "<td>
                                         <div class='action-buttons'>
-                                            <a href='update/kuis.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
+                                            <a href='update/quiz.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
                                             <a href='../../controller/admin/kuis/delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
                                         </div>
                                       </td>";
