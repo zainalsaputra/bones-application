@@ -33,7 +33,7 @@ require_once '../../../config/index.php';
 
 $id = $_GET['id'];
 
-$query = mysqli_query($conn, "SELECT * FROM kuis WHERE id = $id");
+$query = mysqli_query($conn, "SELECT quiz.id, quiz.question, quiz.option1, quiz.option2, quiz.option3, quiz.option4, quiz.correct, quiz.explanation, quiz.image, courses.name FROM quiz INNER JOIN courses ON courses.id = quiz.course_id WHERE quiz.id = $id");
 $result = $query->fetch_assoc();
 
 // foreach ($sql as $result) {
@@ -56,8 +56,10 @@ $result = $query->fetch_assoc();
 
 <body>
     <h2>Update Materi</h2>
-    <form action="../../../controller/admin/kuis/update.php" method="post" enctype="multipart/form-data">
+    <form action="../../../controller/admin/page/quiz/update.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $result['id']; ?>">
+        <label for="question">Module</label><br>
+        <input type="text" id="module" name="module" value="<?php echo $result['name'] ?>" required><br><br>
         <label for="question">Question</label><br>
         <input type="text" id="question" name="question" value="<?php echo $result['question'] ?>" required><br><br>
         <label for="title">Option 1</label><br>

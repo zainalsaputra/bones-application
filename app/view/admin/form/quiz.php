@@ -14,11 +14,9 @@
             <h1>eProduct</h1>
             <ul>
                 <li><a href="index-admin.php">Dashboard</a></li>
-                <li class="active"><a href="module.php">Module 1</a></li>
-                <li><a href="sendi.php">Module 2</a></li>
-                <li><a href="otot.php">Module 3</a></li>
-                <li><a href="penyakit.php">Module 4</a></li>
-                <li><a href="quiz.php">Quiz</a></li>
+                <li><a href="../module.php">Module</a></li>
+                <li class="active"><a href="quiz.php">Quiz</a></li>
+                <li><a href="../logout.php">Logout</a></li>
             </ul>
         </div>
         <div class="main-content">

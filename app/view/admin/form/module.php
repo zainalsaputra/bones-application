@@ -37,7 +37,7 @@
     <div class="container">
         <div class="main-content">
             <header>
-                <h2>Tambah Tulang</h2>
+                <h2>Tambah Module</h2>
                 <a href="tulang.php" class="button">
                     <img src="../../../../assets/img/icon/home.png" alt="Kembali ke Tulang">
                 </a>

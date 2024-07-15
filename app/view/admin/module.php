@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tulang</title>
+    <title>Module</title>
     <link rel="stylesheet" href="../../../assets/css/styles.css">
     <style>
         .notification {
@@ -70,16 +70,14 @@
             <h1>eProduct</h1>
             <ul>
                 <li><a href="index-admin.php">Dashboard</a></li>
-                <li class="active"><a href="module.php">Module 1</a></li>
-                <li><a href="sendi.php">Module 2</a></li>
-                <li><a href="otot.php">Module 3</a></li>
-                <li><a href="penyakit.php">Module 4</a></li>
+                <li class="active"><a href="module.php">Module</a></li>
                 <li><a href="quiz.php">Quiz</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
         <div class="main-content">
             <header>
-                <h2>Tulang</h2>
+                <h2>Module</h2>
                 <div class="header-actions">
                     <img src="../../../assets/img/icon/home.png" alt="Header Image" class="header-image">
                     <a href="form/module.php" class="button">
