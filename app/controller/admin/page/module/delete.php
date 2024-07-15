@@ -12,7 +12,7 @@ if ($conn->query($queryImage)) {
         $sql = "DELETE FROM courses WHERE id='$id'";
         $conn->query($sql);
         if (unlink($dirImage)) {
-            header("Location: ../../../../view/admin/courses.php?delete_success=true");
+            header("Location: ../../../../view/admin/module.php?delete_success=true");
             return;
         } else {
             echo 'Failed to delete image on d';

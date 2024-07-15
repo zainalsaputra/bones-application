@@ -28,10 +28,10 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         die("Gagal mengunggah gambar.");
     }
 }
-$stmt = $conn->prepare("INSERT INTO courses (name, tanggal, image, description) VALUES (?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO courses (name, date, image, description) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssss", $name, $tanggal, $image, $description);
 if ($stmt->execute()) {
-    header("Location: ../../../../view/admin/courses.php");
+    header("Location: ../../../../view/admin/module.php");
 } else {
     echo "Error: " . $stmt->error;
 }

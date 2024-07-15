@@ -70,7 +70,7 @@
             <h1>eProduct</h1>
             <ul>
                 <li><a href="index-admin.php">Dashboard</a></li>
-                <li class="active"><a href="module-1.php">Module 1</a></li>
+                <li class="active"><a href="module.php">Module 1</a></li>
                 <li><a href="sendi.php">Module 2</a></li>
                 <li><a href="otot.php">Module 3</a></li>
                 <li><a href="penyakit.php">Module 4</a></li>
@@ -82,7 +82,7 @@
                 <h2>Tulang</h2>
                 <div class="header-actions">
                     <img src="../../../assets/img/icon/home.png" alt="Header Image" class="header-image">
-                    <a href="form/module-1.php" class="button">
+                    <a href="form/module.php" class="button">
                         <img src="../../../assets/img/icon/add.png" alt="Tambah Tulang">
                     </a>
                 </div>
@@ -104,13 +104,13 @@
                         <?php
                         require_once '../../config/index.php';
 
-                        $sql = "SELECT * FROM tulang";
+                        $sql = "SELECT * FROM courses";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             $no = 1;
                             while ($row = $result->fetch_assoc()) {
-                                $tanggal = !empty($row['tanggal']) ? date('d-m-Y', strtotime($row['tanggal'])) : 'N/A';
+                                $tanggal = !empty($row['date']) ? date('d-m-Y', strtotime($row['date'])) : 'N/A';
                                 echo "<tr id='row_" . $row['id'] . "'>";
                                 echo "<td class='number'>" . $no++ . "</td>";
                                 echo "<td>" . $row['name'] . "</td>";
@@ -119,14 +119,14 @@
                                 echo "<td>" . $tanggal . "</td>";
                                 echo "<td>
                                         <div class='action-buttons'>
-                                            <a href='update/module-1.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
-                                            <a href='../../controller/admin/tulang/delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
+                                            <a href='update/module.php?id=" . $row['id'] . "'><img src='../../../assets/img/icon/edit.png' alt='Edit' style='width: 30px; height: 30px;'></a>
+                                            <a href='../../controller/admin/page/module/delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure you want to delete this item?\");'><img src='../../../assets/img/icon/remove.png' alt='Hapus' style='width: 30px; height: 30px;'></a>
                                         </div>
                                       </td>";
                                 echo "</tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='6'>Tidak ada data tulang</td></tr>";
+                            echo "<tr><td colspan='6'>Tidak ada data materi</td></tr>";
                         }
                         $conn->close();
                         ?>

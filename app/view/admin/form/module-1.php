@@ -43,7 +43,7 @@
                 </a>
             </header>
             <div class="form-container">
-                <form action="../../../controller/admin/tulang/create.php" method="POST" enctype="multipart/form-data">
+                <form action="../../../controller/admin/page/module/create.php" method="POST" enctype="multipart/form-data">
                     <label for="name">Nama Tulang:</label>
                     <input type="text" id="name" name="name" required>
 

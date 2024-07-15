@@ -39,14 +39,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // SQL untuk melakukan update data
     if (!empty($image)) {
-        $sql = "UPDATE courses SET name='$name', tanggal='$tanggal', description='$description', image='$image' WHERE id='$id'";
+        $sql = "UPDATE courses SET name='$name', date='$tanggal', description='$description', image='$image' WHERE id='$id'";
     } else {
-        $sql = "UPDATE courses SET name='$name', tanggal='$tanggal', description='$description' WHERE id='$id'";
+        $sql = "UPDATE courses SET name='$name', date='$tanggal', description='$description' WHERE id='$id'";
     }
 
     if ($conn->query($sql) === TRUE) {
         // Mengarahkan kembali ke halaman courses dengan pesan sukses
-        header("Location: ../../../../view/admin/courses.php?edit_success=true");
+        header("Location: ../../../../view/admin/module.php?edit_success=true");
         exit();
     } else {
         echo "Error updating record: " . $conn->error;

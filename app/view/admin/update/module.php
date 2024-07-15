@@ -6,13 +6,13 @@ if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
     // SQL untuk mengambil data tulang berdasarkan ID
-    $sql = "SELECT * FROM tulang WHERE id='$id'";
+    $sql = "SELECT * FROM courses WHERE id='$id'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $name = $row['name'];
-        $tanggal = $row['tanggal'];
+        $tanggal = $row['date'];
         $description = $row['description'];
         $image = $row['image'];
     } else {
@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
                 <h2>Edit Data Tulang</h2>
             </header>
             <div class="form-container">
-                <form method="POST" action="../../../controller/admin/tulang/update.php" enctype="multipart/form-data">
+                <form method="POST" action="../../../controller/admin/page/module/update.php" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div class="form-group">
                         <label for="name">Nama Tulang:</label>
