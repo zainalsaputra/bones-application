@@ -24,14 +24,14 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
 }
 
 // Prepared statement untuk memasukkan data ke database
-$stmt = $conn->prepare("INSERT INTO kuis (question, option1, option2, option3, option4, correct, explanation, image) 
+$stmt = $conn->prepare("INSERT INTO quiz (question, option1, option2, option3, option4, correct, explanation, image) 
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("ssssssss", $question, $option1, $option2, $option3, $option4, $correct, $explanation, $image);
 
 // Eksekusi statement
 if ($stmt->execute()) {
-    // Redirect ke halaman kuis.php setelah berhasil disimpan
-    header("Location: ../../../view/admin/kuis.php");
+    // Redirect ke halaman quiz.php setelah berhasil disimpan
+    header("Location: ../../../view/admin/quiz.php");
 } else {
     // Tampilkan pesan kesalahan jika terjadi
     echo "Error: " . $stmt->error;
