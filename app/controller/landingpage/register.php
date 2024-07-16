@@ -20,13 +20,13 @@ $cekUsername = mysqli_query($conn, "SELECT username FROM users WHERE username = 
 $cekEmail = mysqli_query($conn, "SELECT username, email FROM users WHERE email = '$email'");
 
 if (mysqli_num_rows($cekUsername) > 0) {
-    echo "<script>alert('Username sudah tersedia!'); document.location.href= '../../view/landingpage/login.php?'</script>";
+    echo "<script>alert('Username sudah tersedia!'); document.location.href= '../../view/landingpage/register.php'</script>";
 } elseif (mysqli_num_rows($cekEmail) > 0) {
-    echo "<script>alert('Email sudah tersedia!'); document.location.href= '../../view/landingpage/login.php'</script>";
+    echo "<script>alert('Email sudah tersedia!'); document.location.href= '../../view/landingpage/register.php'</script>";
 } else {
     $query = "INSERT INTO users (name, username, email, password) VALUES (?,?,?,?)";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('ssss', $name, $username, $email, $password);
     $stmt->execute();
-    echo "<script>alert('Akun telah terdaftar, silahkan login kembali!'); document.location.href= '../../../index.php'</script>";
+    header('location: ../../view/landingpage/login.php?terdaftar');
 }
