@@ -1,5 +1,6 @@
 <?php
 require_once '../../../../config/index.php';
+require_once '../../../../config/session.php';
 
 // Mengambil nilai dari form
 $question = $_POST['question'];

@@ -1,5 +1,6 @@
 <?php
 require_once '../../../../config/index.php';
+require_once '../../../../config/session.php';
 
 // Mendefinisikan variabel dengan nilai default
 $id = $name = $tanggal = $description = $image = "";

@@ -31,6 +31,7 @@
 
 require_once '../../../config/index.php';
 
+
 $id = $_GET['id'];
 
 $query = mysqli_query($conn, "SELECT quiz.id, quiz.question, quiz.option1, quiz.option2, quiz.option3, quiz.option4, quiz.correct, quiz.explanation, quiz.image, courses.name FROM quiz INNER JOIN courses ON courses.id = quiz.course_id WHERE quiz.id = $id");

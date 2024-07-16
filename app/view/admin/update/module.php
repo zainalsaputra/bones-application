@@ -1,5 +1,6 @@
 <?php
 require_once '../../../config/index.php';
+require_once '../../../config/session.php';
 
 // Memeriksa apakah parameter GET id tersedia
 if (isset($_GET['id'])) {

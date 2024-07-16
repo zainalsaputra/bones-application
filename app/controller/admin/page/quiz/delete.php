@@ -1,5 +1,6 @@
 <?php
 require_once '../../../../config/index.php';
+require_once '../../../../config/session.php';
 
 $id = $_GET['id'];
 $queryImage = "SELECT image FROM quiz WHERE id='$id'";
