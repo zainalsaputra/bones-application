@@ -2,11 +2,6 @@
 require_once '../../config/index.php';
 
 session_start();
-// if (isset($_SESSION['admin'])) {
-//     header('location: app/view/bau/index.php');
-// } elseif (isset($_SESSION['pegawai'])) {
-//     header('location: app/view/prodi/index.php');
-// }
 
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -22,13 +17,15 @@ $cekUsername = $result['username'];
 $cekPassword = $result['password'];
 $cekLevel = $result['level'];
 
-if ($cekEmail == $email || $cekUsername == $email && $cekPassword == $password && $cekLevel == 'admin') {
+if (($cekEmail == $email || $cekUsername == $email) && $cekPassword == $password && $cekLevel == 'admin') {
     $_SESSION['admin'] = $name;
     echo $_SESSION['admin'];
     header('location: ../../view/landingpage/login.php?berhasil');
-} elseif ($cekEmail == $email || $cekUsername == $email && $cekPassword == $password && $cekLevel == 'user') {
+    exit();
+} elseif (($cekEmail == $email || $cekUsername == $email) && $cekPassword == $password && $cekLevel == 'user') {
     echo $_SESSION['user'] = $name;
     header('location: ../../view/landingpage/login.php?berhasil');
+    exit();
 } else {
     header('location: ../../view/landingpage/login.php?salah');
 }
