@@ -1,48 +1,14 @@
 <?php
 require_once '../../config/index.php';
+
 session_start();
+if (isset($_SESSION['admin'])) {
+    header('location: ../../../index.php');
+}
+if (isset($_SESSION['user'])) {
+    header('location: ../../../index.php');
+}
 
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     // $servername = "localhost";
-//     // $dbusername = "root"; // Ganti sesuai username database Anda
-//     // $dbpassword = ""; // Ganti sesuai password database Anda
-//     // $dbname = "register"; // Ganti dengan nama database Anda
-
-//     // // Buat koneksi
-//     // $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-
-//     // // Cek koneksi
-//     // if ($conn->connect_error) {
-//     //     die("Connection failed: " . $conn->connect_error);
-//     // }
-
-//     // Ambil data dari form
-//     $username = $_POST['username'];
-//     $password = $_POST['password'];
-
-//     // Cek kredensial pengguna
-//     $sql = "SELECT * FROM students WHERE username = '$username'";
-//     $result = $conn->query($sql);
-
-//     if ($result && $result->num_rows > 0) {
-//         // Ambil data pengguna
-//         $row = $result->fetch_assoc();
-//         // Verifikasi password
-//         if (password_verify($password, $row['password'])) {
-//             // Simpan informasi pengguna ke sesi
-//             $_SESSION['username'] = $row['username'];
-//             // Redirect ke halaman utama setelah login berhasil
-//             header('Location: index/index.php');
-//             exit();
-//         } else {
-//             echo "<script>alert('Invalid password.');</script>";
-//         }
-//     } else {
-//         echo "<script>alert('No user found with this username.');</script>";
-//     }
-
-//     $conn->close();
-// }
 ?>
 
 <!DOCTYPE html>
@@ -57,10 +23,10 @@ session_start();
 <body>
     <div class="container" id="container">
         <div class="form-container log-in-container">
-            <form action="../../controller/login-proses.php" method="POST">
+            <form action="../../controller/landingpage/login.php" method="POST">
                 <h1>Login</h1>
                 <span>or use your account</span>
-                <input type="text" name="username" placeholder="Username" required />
+                <input type="text" name="email" placeholder="Username or Email" required />
                 <input type="password" name="password" placeholder="Password" required />
                 <a href="register.php">Dont't have account? Register now</a>
                 <button type="submit" name="login">Log In</button>
@@ -78,3 +44,15 @@ session_start();
 </body>
 
 </html>
+
+<?php
+if (isset($_GET["salah"])) {
+    echo "<script>alert('cek kembali username/email atau password anda!')</script>";
+}
+if (isset($_GET["berhasil"])) {
+    echo "<script>alert('Login berhasil!')</script>";
+}
+if (isset($_GET["terdaftar"])) {
+    echo "<script>alert('Akun sudah terdaftar, silahkan login kembali!')</script>";
+}
+?>

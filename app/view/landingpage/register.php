@@ -1,35 +1,35 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $servername = "localhost";
-    $dbusername = "root"; // Ganti sesuai username database Anda
-    $dbpassword = ""; // Ganti sesuai password database Anda
-    $dbname = "student_registration";
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//     $servername = "localhost";
+//     $dbusername = "root"; // Ganti sesuai username database Anda
+//     $dbpassword = ""; // Ganti sesuai password database Anda
+//     $dbname = "student_registration";
 
-    // Buat koneksi
-    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+//     // Buat koneksi
+//     $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-    // Cek koneksi
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+//     // Cek koneksi
+//     if ($conn->connect_error) {
+//         die("Connection failed: " . $conn->connect_error);
+//     }
 
-    // Ambil data dari form
-    $full_name = $_POST['full_name'];
-    $user = $_POST['username'];
-    $class = $_POST['class'];
-    $pass = password_hash($_POST['password'], PASSWORD_DEFAULT); // Enkripsi password
+//     // Ambil data dari form
+//     $full_name = $_POST['full_name'];
+//     $user = $_POST['username'];
+//     $class = $_POST['class'];
+//     $pass = password_hash($_POST['password'], PASSWORD_DEFAULT); // Enkripsi password
 
-    // Masukkan data ke database
-    $sql = "INSERT INTO students (full_name, username, class, password) VALUES ('$full_name', '$user', '$class', '$pass')";
+//     // Masukkan data ke database
+//     $sql = "INSERT INTO students (full_name, username, class, password) VALUES ('$full_name', '$user', '$class', '$pass')";
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('New record created successfully');</script>";
-    } else {
-        echo "<script>alert('Error: " . $sql . "<br>" . $conn->error . "');</script>";
-    }
+//     if ($conn->query($sql) === TRUE) {
+//         echo "<script>alert('New record created successfully');</script>";
+//     } else {
+//         echo "<script>alert('Error: " . $sql . "<br>" . $conn->error . "');</script>";
+//     }
 
-    $conn->close();
-}
+//     $conn->close();
+// }
 ?>
 
 <!DOCTYPE html>
@@ -44,12 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="register.php" method="POST" style="margin-left: 45px;">
+            <form action="../../controller/landingpage/register.php" method="POST" style="margin-left: 45px;">
                 <h1>Register</h1>
                 <span>fill in your details below</span>
-                <input type="text" name="full_name" placeholder="Full Name" required />
+                <input type="text" name="name" placeholder="Name" required />
+                <input type="email" name="email" placeholder="Email" required />
                 <input type="text" name="username" placeholder="Username" required />
-                <input type="text" name="class" placeholder="Class" required />
                 <input type="password" name="password" placeholder="Password" required />
                 <button type="submit">Register</button>
             </form>
