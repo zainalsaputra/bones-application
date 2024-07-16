@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 16, 2024 at 05:09 AM
+-- Generation Time: Jul 16, 2024 at 09:16 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.7
 
@@ -35,14 +35,6 @@ CREATE TABLE `courses` (
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `courses`
---
-
-INSERT INTO `courses` (`id`, `name`, `date`, `description`, `image`) VALUES
-(11, 'Tengkorak', '2024-07-15', 'dkudtk', 'InShot_20240714_120603291.jpg'),
-(12, 'Kepala', '2024-07-04', 'khccght', '20210716092054b94920c3fcf080b4e89cead9aa04784e.png');
-
 -- --------------------------------------------------------
 
 --
@@ -61,13 +53,6 @@ CREATE TABLE `quiz` (
   `image` varchar(255) DEFAULT NULL,
   `course_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `quiz`
---
-
-INSERT INTO `quiz` (`id`, `question`, `option1`, `option2`, `option3`, `option4`, `correct`, `explanation`, `image`, `course_id`) VALUES
-(13, 'cgmvhg,jhg', 'a', 's', 's', 'd', 'A', '/,mlm', 'Sundar.jpg', 11);
 
 -- --------------------------------------------------------
 
@@ -108,9 +93,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `role_id`) VALUES
-(1, 'admin', 'admin@gmail.com', 'admin1', 'admin1', 1),
-(2, 'user', 'user@gmail.com', 'user1', 'user1', 2),
-(3, 'Zainal Saputra', 'zainalsaputra001@gmail.com', 'mahasiswa', 'mahasiswa', 2);
+(1, 'admin', 'admin1@gmail.com', 'admin1', 'admin1', 1),
+(2, 'user', 'user1@gmail.com', 'user1', 'user1', 2),
+(10, 'Zainal Saputra', 'ethicalcyber001@gmail.com', 'zara', 'zara', 2);
 
 --
 -- Indexes for dumped tables
@@ -150,13 +135,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -168,7 +153,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

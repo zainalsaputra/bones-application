@@ -2,10 +2,8 @@
 require_once '../../../../config/index.php';
 require_once '../../../../config/session.php';
 
-// Mendefinisikan variabel dengan nilai default
 $image = "";
 
-// Memeriksa apakah form edit telah disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
     $question = $_POST['question'];
@@ -36,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // SQL untuk melakukan update data
     if (!empty($image)) {
         $query = "UPDATE quiz SET question = ?, option1 = ?, option2 = ?, option3 = ?, option4 = ?, correct = ?, explanation = ?, image = ?, course_id = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
@@ -48,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($stmt->execute()) {
-        // Mengarahkan kembali ke halaman courses dengan pesan sukses
         header("Location: ../../../../view/admin/quiz.php?edit_success=true");
         exit();
     } else {
@@ -56,21 +52,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// SQL untuk melakukan update data
-// if (!empty($image)) {
-//     $sql = "UPDATE quiz SET question = '$question', option1 = '$option1', option2 = '$option2', option3 = '$option3', option4 = '$option4', correct = '$correct', explanation = '$explanation', image = '$image, course_id = '$course_id' WHERE id = '$id'";
-// } else {
-//     $sql = "UPDATE quiz SET question = '$question', option1 = '$option1', option2 = '$option2', option3 = '$option3', option4 = '$option4', correct = '$correct', explanation = '$explanation', course_id = '$course_id' WHERE id = '$id'";
-// }
-
-// if ($conn->query($sql) === TRUE) {
-//     // Mengarahkan kembali ke halaman courses dengan pesan sukses
-//     header("Location: ../../../../view/admin/quiz.php?edit_success=true");
-//     exit();
-// } else {
-//     echo "Error updating record: " . $conn->error;
-// }
-// }
-
-// Menutup koneksi
 $conn->close();

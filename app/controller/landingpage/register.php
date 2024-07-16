@@ -6,16 +6,6 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// $cekUsername = $pdo->prepare("SELECT * FROM users WHERE username = :username");
-// $cekUsername->execute(['username' => $username]);
-// if ($cekUsername->rowCount() > 0) {
-//     echo "<script>alert('Username sudah tersedia!'); document.location.href= '../../view/landingpage/login.php'</script>";
-// }
-
-// $cekEmail = $conn->prepare("SELECT * FROM users WHERE email = :email");
-// $cekEmail->execute(['email' => $email]);
-
-
 $cekUsername = mysqli_query($conn, "SELECT username FROM users WHERE username = '$username'");
 $cekEmail = mysqli_query($conn, "SELECT username, email FROM users WHERE email = '$email'");
 
