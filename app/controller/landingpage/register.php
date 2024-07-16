@@ -15,13 +15,14 @@ $password = $_POST['password'];
 // $cekEmail = $conn->prepare("SELECT * FROM users WHERE email = :email");
 // $cekEmail->execute(['email' => $email]);
 
-$query = "SELECT username, email FROM users";
 
-$sql = mysqli_query($conn, $query);
-$result = $sql->fetch_assoc();
+$cekUsername = mysqli_query($conn, "SELECT username FROM users WHERE username = '$username'");
+$cekEmail = mysqli_query($conn, "SELECT username, email FROM users WHERE email = '$email'");
 
-if (mysqli_num_rows($sql) > 0) {
-    echo "<script>alert('Username sudah tersedia!'); document.location.href= '../../view/landingpage/login.php'</script>";
+if (mysqli_num_rows($cekUsername) > 0) {
+    echo "<script>alert('Username sudah tersedia!'); document.location.href= '../../view/landingpage/login.php?'</script>";
+} elseif (mysqli_num_rows($cekEmail) > 0) {
+    echo "<script>alert('Email sudah tersedia!'); document.location.href= '../../view/landingpage/login.php'</script>";
 } else {
     $query = "INSERT INTO users (name, username, email, password) VALUES (?,?,?,?)";
     $stmt = $conn->prepare($query);
